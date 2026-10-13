@@ -1,1 +1,209 @@
-Under development
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>C Code Vault | Excellent Institute</title>
+    
+    <!-- External Libraries (Matching your main ERP app's theme) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-900 text-slate-200 font-['Plus_Jakarta_Sans',sans-serif] h-screen overflow-hidden flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-slate-800 border-b border-slate-700 p-4 sm:px-6 shadow-lg shrink-0 z-20">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3 w-full sm:w-auto">
+                <div class="w-10 h-10 bg-indigo-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-500/30 shrink-0">
+                    <i class="fa-solid fa-code text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-extrabold text-white leading-tight">Cloud Code Vault</h1>
+                    <p class="text-[10px] sm:text-xs text-indigo-400 font-bold uppercase tracking-widest">Excellent Institute</p>
+                </div>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="relative w-full sm:w-72 md:w-96">
+                <i class="fa-solid fa-search absolute left-3 top-3 text-slate-400"></i>
+                <input type="text" id="searchInput" placeholder="Search for programs..." class="w-full bg-slate-900 border border-slate-700 text-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-all placeholder-slate-500">
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Filters -->
+    <div class="bg-slate-800/50 border-b border-slate-700/50 shrink-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 overflow-x-auto no-scrollbar flex items-center gap-2" id="categoryContainer">
+            <!-- Categories injected by JS -->
+        </div>
+    </div>
+
+    <!-- Main Content Area (Scrollable Grid) -->
+    <main class="flex-1 overflow-y-auto p-4 sm:p-6 custom-scrollbar pb-32">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Statistics / Counter -->
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-sm font-bold text-slate-400 uppercase tracking-wider" id="resultsCount">Loading programs...</h2>
+            </div>
+
+            <!-- Program Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5" id="programGrid">
+                <!-- Cards injected by JS -->
+            </div>
+
+            <!-- Empty State (Hidden by default) -->
+            <div id="emptyState" class="hidden flex-col items-center justify-center py-20 text-center">
+                <i class="fa-solid fa-ghost text-6xl text-slate-700 mb-4"></i>
+                <h3 class="text-xl font-bold text-slate-300">No programs found</h3>
+                <p class="text-sm text-slate-500 mt-2">Try searching with a different keyword.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- External Script -->
+    <script src="script.js"></script>
+
+    <!-- ========================================================================================= -->
+    <!-- ⬇️ PASTE NEW CODES BELOW THIS LINE! ⬇️ -->
+    <!-- FORMAT: 
+         [PROGRAM] 
+         Title: Your Title 
+         Category: Your Category 
+         Code: 
+         #include <stdio.h> ... 
+    -->
+    <!-- ========================================================================================= -->
+
+<script type="text/plain" id="vault-database">
+
+[PROGRAM]
+Title: Hello World
+Category: Basics
+Code:
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}
+
+[PROGRAM]
+Title: Addition of Two Numbers
+Category: Basics
+Code:
+#include <stdio.h>
+
+int main() {
+    int a, b;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+    printf("Sum = %d\n", a + b);
+    return 0;
+}
+
+[PROGRAM]
+Title: Check Even or Odd
+Category: If-Else Logic
+Code:
+#include <stdio.h>
+
+int main() {
+    int num;
+    printf("Enter an integer: ");
+    scanf("%d", &num);
+    
+    if (num % 2 == 0)
+        printf("%d is Even.\n", num);
+    else
+        printf("%d is Odd.\n", num);
+        
+    return 0;
+}
+
+[PROGRAM]
+Title: Find Factorial
+Category: Loops
+Code:
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    long long fact = 1;
+    printf("Enter an integer: ");
+    scanf("%d", &n);
+    
+    if (n < 0)
+        printf("Error! Factorial of a negative number doesn't exist.");
+    else {
+        for (i = 1; i <= n; ++i) {
+            fact *= i;
+        }
+        printf("Factorial of %d = %lld\n", n, fact);
+    }
+    return 0;
+}
+
+[PROGRAM]
+Title: Fibonacci Sequence
+Category: Loops
+Code:
+#include <stdio.h>
+
+int main() {
+    int i, n, t1 = 0, t2 = 1, nextTerm;
+    printf("Enter number of terms: ");
+    scanf("%d", &n);
+    printf("Fibonacci Series: ");
+
+    for (i = 1; i <= n; ++i) {
+        printf("%d, ", t1);
+        nextTerm = t1 + t2;
+        t1 = t2;
+        t2 = nextTerm;
+    }
+    return 0;
+}
+
+[PROGRAM]
+Title: Simple Calculator (Switch Case)
+Category: Switch Case
+Code:
+#include <stdio.h>
+
+int main() {
+    char op;
+    double first, second;
+    printf("Enter operator (+, -, *, /): ");
+    scanf(" %c", &op);
+    printf("Enter two numbers: ");
+    scanf("%lf %lf", &first, &second);
+
+    switch (op) {
+        case '+':
+            printf("%.1lf + %.1lf = %.1lf\n", first, second, first + second);
+            break;
+        case '-':
+            printf("%.1lf - %.1lf = %.1lf\n", first, second, first - second);
+            break;
+        case '*':
+            printf("%.1lf * %.1lf = %.1lf\n", first, second, first * second);
+            break;
+        case '/':
+            printf("%.1lf / %.1lf = %.1lf\n", first, second, first / second);
+            break;
+        default:
+            printf("Error! operator is not correct\n");
+    }
+    return 0;
+}
+
+</script>
+</body>
+</html>
