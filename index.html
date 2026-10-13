@@ -506,6 +506,234 @@ int main() {
     return 0;
 }
 
+[PROGRAM]
+Title: Arithmetic & Geometric Progression (First n terms)
+Category: Series & Sequences
+Code:
+#include <stdio.h>
+
+int main() {
+    int choice, n, i;
+    float a, d, term;
+    
+    printf("1. Arithmetic Progression (AP)\n");
+    printf("2. Geometric Progression (GP)\n");
+    printf("Enter choice (1 or 2): ");
+    scanf("%d", &choice);
+    
+    printf("Enter first term (a): ");
+    scanf("%f", &a);
+    printf("Enter difference/multiplier (d): ");
+    scanf("%f", &d);
+    printf("Enter number of terms (n > 0): ");
+    scanf("%d", &n);
+    
+    term = a;
+    printf("Progression: ");
+    for(i = 1; i <= n; i++) {
+        printf("%.2f ", term);
+        if(choice == 1) {
+            term += d; // AP logic
+        } else {
+            term *= d; // GP logic
+        }
+    }
+    printf("\n");
+    return 0;
+}
+
+[PROGRAM]
+Title: First n terms of Fibonacci Sequence
+Category: Series & Sequences
+Code:
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    long long t1 = 0, t2 = 1, next;
+    
+    printf("Enter number of terms (n > 0): ");
+    scanf("%d", &n);
+    
+    printf("Fibonacci Sequence: ");
+    for (i = 1; i <= n; i++) {
+        if(i == 1) { 
+            printf("%lld ", t1); 
+            continue; 
+        }
+        if(i == 2) { 
+            printf("%lld ", t2); 
+            continue; 
+        }
+        next = t1 + t2;
+        t1 = t2;
+        t2 = next;
+        printf("%lld ", next);
+    }
+    printf("\n");
+    return 0;
+}
+
+[PROGRAM]
+Title: First n terms of Tribonacci Sequence
+Category: Series & Sequences
+Code:
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    long long t1 = 0, t2 = 0, t3 = 1, next;
+    
+    printf("Enter number of terms (n > 0): ");
+    scanf("%d", &n);
+    
+    printf("Tribonacci Sequence: ");
+    for (i = 1; i <= n; i++) {
+        if(i == 1) { printf("%lld ", t1); continue; }
+        if(i == 2) { printf("%lld ", t2); continue; }
+        if(i == 3) { printf("%lld ", t3); continue; }
+        
+        next = t1 + t2 + t3;
+        t1 = t2;
+        t2 = t3;
+        t3 = next;
+        printf("%lld ", next);
+    }
+    printf("\n");
+    return 0;
+}
+
+[PROGRAM]
+Title: Check Consecutive Fibonacci Numbers
+Category: Series & Sequences
+Code:
+#include <stdio.h>
+
+int main() {
+    long long n1, n2, a = 0, b = 1, next = 0;
+    int found = 0;
+    
+    printf("Enter two positive integers (n1 n2): ");
+    scanf("%lld %lld", &n1, &n2);
+    
+    // Swap if n1 is greater than n2 to keep them in order
+    if (n1 > n2) { 
+        long long temp = n1; 
+        n1 = n2; 
+        n2 = temp; 
+    }
+    
+    while (b <= n2) {
+        if (a == n1 && b == n2) { 
+            found = 1; 
+            break; 
+        }
+        next = a + b;
+        a = b;
+        b = next;
+    }
+    
+    if (found) {
+        printf("%lld and %lld ARE consecutive Fibonacci numbers.\n", n1, n2);
+    } else {
+        printf("%lld and %lld are NOT consecutive Fibonacci numbers.\n", n1, n2);
+    }
+    return 0;
+}
+
+[PROGRAM]
+Title: Approximate Pi (Taylor Series)
+Category: Mathematics
+Code:
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    double pi_approx = 0.0;
+    int sign = 1;
+    
+    printf("Enter number of terms (n > 0): ");
+    scanf("%d", &n);
+    
+    // Using Leibniz formula for Pi
+    for (i = 0; i < n; i++) {
+        pi_approx += sign * (1.0 / (2 * i + 1));
+        sign *= -1; // Flip sign each iteration
+    }
+    pi_approx *= 4.0;
+    
+    printf("Approximate value of Pi after %d terms: %.6lf\n", n, pi_approx);
+    return 0;
+}
+
+[PROGRAM]
+Title: Approximate e^x (Taylor Series)
+Category: Mathematics
+Code:
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    double x, sum = 1.0, term = 1.0;
+    
+    printf("Enter the value of x: ");
+    scanf("%lf", &x);
+    printf("Enter number of terms (n > 0): ");
+    scanf("%d", &n);
+    
+    // e^x = 1 + x/1! + x^2/2! + x^3/3! ...
+    for (i = 1; i < n; i++) {
+        term = term * x / i;
+        sum += term;
+    }
+    
+    printf("Approximate value of e^%.2lf after %d terms: %.5lf\n", x, n, sum);
+    return 0;
+}
+
+[PROGRAM]
+Title: Approximate sin(x)/cos(x) (Taylor Series)
+Category: Mathematics
+Code:
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    double x, sin_x = 0, cos_x = 0;
+    double term_sin, term_cos;
+    
+    printf("Enter angle x in radians: ");
+    scanf("%lf", &x);
+    printf("Enter number of terms (n > 0): ");
+    scanf("%d", &n);
+    
+    term_sin = x;
+    term_cos = 1.0;
+    sin_x = term_sin;
+    cos_x = term_cos;
+    
+    for (i = 1; i < n; i++) {
+        // Compute next term for sin(x)
+        term_sin = -term_sin * x * x / ((2 * i) * (2 * i + 1));
+        sin_x += term_sin;
+        
+        // Compute next term for cos(x)
+        term_cos = -term_cos * x * x / ((2 * i - 1) * (2 * i));
+        cos_x += term_cos;
+    }
+    
+    printf("Approximate sin(%.2lf) = %.5lf\n", x, sin_x);
+    printf("Approximate cos(%.2lf) = %.5lf\n", x, cos_x);
+    
+    if(cos_x != 0) {
+        printf("Approximate tan(%.2lf) [sin/cos] = %.5lf\n", x, sin_x / cos_x);
+    } else {
+        printf("cos(x) is 0, therefore tan(x) is undefined.\n");
+    }
+        
+    return 0;
+}
+
 </script>
 </body>
 </html>
