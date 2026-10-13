@@ -1,0 +1,62 @@
+/* Hide default scrollbars but allow scrolling */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Custom modern scrollbar for main window and code blocks */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
+
+/* Code block styling */
+.code-preview {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    background-color: #020617;
+    color: #38BDF8;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    overflow-x: auto;
+    white-space: pre;
+    max-height: 200px;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+    border: 1px solid #1E293B;
+}
+
+/* Card hover animation */
+.program-card {
+    transition: all 0.2s ease-in-out;
+}
+.program-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    border-color: #4F46E5;
+}
+
+/* Load button animation */
+.btn-load {
+    transition: all 0.2s;
+}
+.program-card:hover .btn-load {
+    background-color: #4F46E5;
+    color: white;
+}
+.btn-load:active {
+    transform: scale(0.95);
+}
