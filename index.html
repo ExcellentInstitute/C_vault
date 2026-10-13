@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- STRICT ANTI-CACHE META TAGS -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
     <title>C Code Vault | Excellent Institute</title>
     
-    <!-- External Libraries (Matching your main ERP app's theme) -->
+    <!-- External Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,20 +24,33 @@
     <!-- Header -->
     <header class="bg-slate-800 border-b border-slate-700 p-4 sm:px-6 shadow-lg shrink-0 z-20">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3 w-full sm:w-auto">
-                <div class="w-10 h-10 bg-indigo-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-500/30 shrink-0">
-                    <i class="fa-solid fa-code text-lg"></i>
+            <div class="flex items-center justify-between w-full sm:w-auto gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-indigo-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-500/30 shrink-0">
+                        <i class="fa-solid fa-code text-lg"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg sm:text-xl font-extrabold text-white leading-tight">Cloud Code Vault</h1>
+                        <p class="text-[10px] sm:text-xs text-indigo-400 font-bold uppercase tracking-widest">Excellent Institute</p>
+                    </div>
                 </div>
-                <div>
-                    <h1 class="text-lg sm:text-xl font-extrabold text-white leading-tight">Cloud Code Vault</h1>
-                    <p class="text-[10px] sm:text-xs text-indigo-400 font-bold uppercase tracking-widest">Excellent Institute</p>
-                </div>
+                
+                <!-- NEW: Manual Refresh Button -->
+                <button onclick="window.location.reload(true)" class="sm:hidden w-10 h-10 bg-slate-700 rounded-xl flex items-center justify-center text-slate-300 hover:bg-indigo-500 hover:text-white transition-all">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </button>
             </div>
             
-            <!-- Search Bar -->
-            <div class="relative w-full sm:w-72 md:w-96">
-                <i class="fa-solid fa-search absolute left-3 top-3 text-slate-400"></i>
-                <input type="text" id="searchInput" placeholder="Search for programs..." class="w-full bg-slate-900 border border-slate-700 text-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-all placeholder-slate-500">
+            <div class="flex items-center gap-3 w-full sm:w-72 md:w-96">
+                <!-- Search Bar -->
+                <div class="relative flex-1">
+                    <i class="fa-solid fa-search absolute left-3 top-3 text-slate-400"></i>
+                    <input type="text" id="searchInput" placeholder="Search for programs..." class="w-full bg-slate-900 border border-slate-700 text-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-sm focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 outline-none transition-all placeholder-slate-500">
+                </div>
+                <!-- Desktop Refresh Button -->
+                <button onclick="window.location.reload(true)" class="hidden sm:flex w-11 h-11 bg-slate-700 rounded-xl items-center justify-center text-slate-300 hover:bg-indigo-500 hover:text-white transition-all shrink-0">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </button>
             </div>
         </div>
     </header>
@@ -68,17 +87,10 @@
     </main>
 
     <!-- External Script -->
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
 
     <!-- ========================================================================================= -->
     <!-- ⬇️ PASTE NEW CODES BELOW THIS LINE! ⬇️ -->
-    <!-- FORMAT: 
-         [PROGRAM] 
-         Title: Your Title 
-         Category: Your Category 
-         Code: 
-         #include <stdio.h> ... 
-    -->
     <!-- ========================================================================================= -->
 
 <script type="text/plain" id="vault-database">
@@ -172,7 +184,7 @@ int main() {
 }
 
 [PROGRAM]
-Title: Simple Calculator (Switch Case)
+Title: Simple Calculator
 Category: Switch Case
 Code:
 #include <stdio.h>
@@ -200,6 +212,296 @@ int main() {
             break;
         default:
             printf("Error! operator is not correct\n");
+    }
+    return 0;
+}
+
+[PROGRAM]
+Title: Celsius to Fahrenheit & Vice Versa
+Category: Conversions
+Code:
+#include <stdio.h>
+
+int main() {
+    int choice;
+    float temp, converted;
+
+    printf("1. Celsius to Fahrenheit\n");
+    printf("2. Fahrenheit to Celsius\n");
+    printf("Enter your choice (1 or 2): ");
+    scanf("%d", &choice);
+
+    if (choice == 1) {
+        printf("Enter temperature in Celsius: ");
+        scanf("%f", &temp);
+        converted = (temp * 9 / 5) + 32;
+        printf("%.2f Celsius = %.2f Fahrenheit\n", temp, converted);
+    } else if (choice == 2) {
+        printf("Enter temperature in Fahrenheit: ");
+        scanf("%f", &temp);
+        converted = (temp - 32) * 5 / 9;
+        printf("%.2f Fahrenheit = %.2f Celsius\n", temp, converted);
+    } else {
+        printf("Invalid choice!\n");
+    }
+    return 0;
+}
+
+[PROGRAM]
+Title: Sort Three Numbers
+Category: Arrays & Sorting
+Code:
+#include <stdio.h>
+
+int main() {
+    int a, b, c, temp;
+    printf("Enter three numbers: ");
+    scanf("%d %d %d", &a, &b, &c);
+
+    if (a > b) { temp = a; a = b; b = temp; }
+    if (a > c) { temp = a; a = c; c = temp; }
+    if (b > c) { temp = b; b = c; c = temp; }
+
+    printf("Sorted order: %d, %d, %d\n", a, b, c);
+    return 0;
+}
+
+[PROGRAM]
+Title: Number, Square, and Cube Table
+Category: Loops
+Code:
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    printf("Enter a positive integer n: ");
+    scanf("%d", &n);
+
+    printf("Number | Square | Cube\n");
+    printf("----------------------\n");
+    for (i = 1; i <= n; i++) {
+        printf("%-6d | %-6d | %-6d\n", i, i * i, i * i * i);
+    }
+    return 0;
+}
+
+[PROGRAM]
+Title: Display Odd Numbers up to n
+Category: Loops
+Code:
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    printf("Enter a positive integer n: ");
+    scanf("%d", &n);
+
+    printf("Odd numbers from 1 to %d are:\n", n);
+    for (i = 1; i <= n; i += 2) {
+        printf("%d ", i);
+    }
+    printf("\n");
+    return 0;
+}
+
+[PROGRAM]
+Title: Multiplication Tables up to n
+Category: Loops
+Code:
+#include <stdio.h>
+
+int main() {
+    int n, m, i, j;
+    printf("Enter number of tables (n): ");
+    scanf("%d", &n);
+    printf("Enter number of rows (m): ");
+    scanf("%d", &m);
+
+    for (i = 1; i <= n; i++) {
+        printf("\nTable of %d:\n", i);
+        for (j = 1; j <= m; j++) {
+            printf("%d x %d = %d\n", i, j, i * j);
+        }
+    }
+    return 0;
+}
+
+[PROGRAM]
+Title: Pattern - $ Triangle
+Category: Patterns
+Code:
+#include <stdio.h>
+
+int main() {
+    int n, i, j;
+    printf("Enter number of rows: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= i; j++) {
+            printf("$");
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+[PROGRAM]
+Title: Pattern - Reverse $ Triangle
+Category: Patterns
+Code:
+#include <stdio.h>
+
+int main() {
+    int n, i, j;
+    printf("Enter number of rows: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= n - i + 1; j++) {
+            printf("$");
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+[PROGRAM]
+Title: Pattern - Number Triangle
+Category: Patterns
+Code:
+#include <stdio.h>
+
+int main() {
+    int n, i, j;
+    printf("Enter number of rows: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= i; j++) {
+            printf("%d", j);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+[PROGRAM]
+Title: Pattern - Reverse Number Triangle
+Category: Patterns
+Code:
+#include <stdio.h>
+
+int main() {
+    int n, i, j;
+    printf("Enter number of rows: ");
+    scanf("%d", &n);
+
+    for (i = n; i >= 1; i--) {
+        for (j = 1; j <= i; j++) {
+            printf("%d", j);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+[PROGRAM]
+Title: Pattern - Hollow Square
+Category: Patterns
+Code:
+#include <stdio.h>
+
+int main() {
+    int n, i, j;
+    printf("Enter side length: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= n; j++) {
+            if (i == 1 || i == n || j == 1 || j == n) {
+                printf("#");
+            } else {
+                printf(" ");
+            }
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+[PROGRAM]
+Title: Pattern - Number Pyramid
+Category: Patterns
+Code:
+#include <stdio.h>
+
+int main() {
+    int n, i, j, space;
+    printf("Enter number of rows: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        for (space = 1; space <= n - i; space++) {
+            printf(" ");
+        }
+        for (j = 1; j <= i; j++) {
+            printf("%d", j);
+        }
+        for (j = i - 1; j >= 1; j--) {
+            printf("%d", j);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+[PROGRAM]
+Title: Pattern - Square with Diagonals
+Category: Patterns
+Code:
+#include <stdio.h>
+
+int main() {
+    int n, i, j;
+    printf("Enter size: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= n; j++) {
+            if (i == 1 || i == n || j == 1 || j == n || i == j || j == (n - i + 1)) {
+                printf("* ");
+            } else {
+                printf("  ");
+            }
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+[PROGRAM]
+Title: Pattern - Diamond
+Category: Patterns
+Code:
+#include <stdio.h>
+
+int main() {
+    int n, i, j, space;
+    printf("Enter half the size of diamond: ");
+    scanf("%d", &n);
+
+    // Top half
+    for (i = 1; i <= n; i++) {
+        for (space = 1; space <= n - i; space++) printf(" ");
+        for (j = 1; j <= 2 * i - 1; j++) printf("*");
+        printf("\n");
+    }
+    // Bottom half
+    for (i = n - 1; i >= 1; i--) {
+        for (space = 1; space <= n - i; space++) printf(" ");
+        for (j = 1; j <= 2 * i - 1; j++) printf("*");
+        printf("\n");
     }
     return 0;
 }
